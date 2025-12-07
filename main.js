@@ -8,6 +8,8 @@ const days = document.getElementById('days');
 const months = document.getElementById('months');
 const years = document.getElementById('years');
 
+const today = new Date();
+
 
 btn.addEventListener('click', () => {
     

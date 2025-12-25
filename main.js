@@ -26,13 +26,19 @@ btn.addEventListener('click', () => {
     const month = newDate.getMonth() + 1;
     const year = newDate.getFullYear();
 
-    console.log('Day: ' + day);
-    console.log('Month: ' + month);
-    console.log('Year: ' + year);
+    // console.log('Day: ' + day);
+    // console.log('Month: ' + month);
+    // console.log('Year: ' + year);
+
+
+    const ageD = today.getDate() - day;
+    const ageM = today.getMonth() + 1 - month;
+    const ageY = today.getFullYear() - year;
 
 
 
-    days.textContent = day;
-    months.textContent = month;
-    years.textContent = year; 
+
+    days.textContent = ageD;
+    months.textContent = ageM;
+    years.textContent = ageY; 
 })

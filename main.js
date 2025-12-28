@@ -1,3 +1,4 @@
+// const { createElement } = require("react");
 
 console.log('Hello, World!');
 
@@ -8,7 +9,7 @@ const days = document.getElementById('days');
 const months = document.getElementById('months');
 const years = document.getElementById('years');
 
-const today = new Date();
+const cDate = new Date();
 
 
 btn.addEventListener('click', () => {
@@ -51,11 +52,44 @@ btn.addEventListener('click', () => {
     // console.log('Year: ' + year);
 
 
-    const ageD = today.getDate() - day;
-    const ageM = today.getMonth() + 1 - month;
-    const ageY = today.getFullYear() - year;
+    const ageD = cDate.getDate() - day;
+    const ageM = cDate.getMonth() + 1 - month;
+    const ageY = cDate.getFullYear() - year;
 
     days.textContent = ageD;
     months.textContent = ageM;
     years.textContent = ageY; 
+
+
+        //Prevent future dates
+
+    if (newDate > cDate) {
+
+        days.textContent = '';
+        months.textContent = '';
+        years.textContent = '';
+
+        const popupThing2 = document.createElement('div');
+        popupThing2.textContent = "Not Born Yet!!";
+        popupThing2.style.backgroundColor = '#f38ba8';
+        popupThing2.style.color = '#11111b';
+        popupThing2.style.width = '100%';
+        popupThing2.style.height = '20px';
+        popupThing2.style.textAlign = 'center';
+        popupThing2.style.borderRadius = '7px';
+
+        popupThing2.style.position = 'fixed';
+        popupThing2.style.top = '20px';
+        popupThing2.style.left = '50%';
+        popupThing2.style.transform = 'translateX(-50%)';
+        popupThing2.style.zIndex = '9999';
+
+        document.body.appendChild(popupThing2);
+
+        setTimeout(() => {
+            popupThing2.remove();
+        }, 2000);
+        
+        return;
+    }
 })

@@ -47,11 +47,6 @@ btn.addEventListener('click', () => {
     const month = newDate.getMonth() + 1;
     const year = newDate.getFullYear();
 
-    // console.log('Day: ' + day);
-    // console.log('Month: ' + month);
-    // console.log('Year: ' + year);
-
-
     const ageD = cDate.getDate() - day;
     const ageM = cDate.getMonth() + 1 - month;
     const ageY = cDate.getFullYear() - year;
@@ -61,7 +56,7 @@ btn.addEventListener('click', () => {
     years.textContent = ageY; 
 
 
-        //Prevent future dates
+    /////////////////////////////////Prevent future dates
 
     if (newDate > cDate) {
 
@@ -92,4 +87,9 @@ btn.addEventListener('click', () => {
         
         return;
     }
+
+
+    /////////////////////////////////Fix negative days/months
+
+    
 })

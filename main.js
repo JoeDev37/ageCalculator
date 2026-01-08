@@ -1,6 +1,5 @@
-// const { createElement } = require("react");
 
-console.log('Hello, World!');
+document.title = 'Age Calculator'
 
 const date = document.getElementById('date');
 const btn = document.getElementById('btn');
@@ -47,9 +46,9 @@ btn.addEventListener('click', () => {
     const month = newDate.getMonth() + 1;
     const year = newDate.getFullYear();
 
-    const ageD = cDate.getDate() - day;
-    const ageM = cDate.getMonth() + 1 - month;
-    const ageY = cDate.getFullYear() - year;
+    let ageD = cDate.getDate() - day;
+    let ageM = cDate.getMonth() + 1 - month;
+    let ageY = cDate.getFullYear() - year;
 
     days.textContent = ageD;
     months.textContent = ageM;
@@ -89,7 +88,25 @@ btn.addEventListener('click', () => {
     }
 
 
-    /////////////////////////////////Fix negative days/months
+    /////////////////////////////////Fix negative days/months (borrowing logic)
+
+    if (ageD < 0) {
+        const lastDayOfLastMonth = new Date(
+            cDate.getFullYear(), 
+            cDate.getMonth(), 0).getDate()
+
+        ageD += lastDayOfLastMonth;
+        ageM --;
+    } 
+
+    if (ageM < 0) {
+        ageM += 12;
+        ageY--;
+    }
+
+    days.textContent = ageD;
+    months.textContent = ageM;
+    years.textContent = ageY; 
 
     
 })
